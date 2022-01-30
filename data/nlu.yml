@@ -16,29 +16,54 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
+    - good night
+    - welcome
+    - what's up
+    - how do you do
+    - how you doing
+    - how you doin    
 
 - intent: goodbye
   examples: |
     - cu
+    - see you
     - good by
-    - cee you later
+    - cee you
     - good night
     - bye
+    - byee
     - goodbye
     - have a nice day
     - see you around
     - bye bye
     - see you later
+    - have a good day
+    - have a great day 
+    - best regards
+    - all the best
+    - wishes
+    - regards
 
 - intent: affirm
   examples: |
     - yes
     - y
+    - ya
     - indeed
     - of course
-    - that sounds good
+    - sounds good
     - correct
-
+    - ok
+    - true
+    - that is true
+    - that's true
+    - sure
+    - right
+    - yapp
+    - all right
+    - okay
+    - okey
+        
 - intent: deny
   examples: |
     - no
@@ -48,40 +73,19 @@ nlu:
     - don't like that
     - no way
     - not really
-
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+    - false
+    - wrong
+    - nope
+    - nop
+    - incorrect
+    - not at all
+    - noo
+    - impossible 
+    - i didn't 
+    - no i did not
+    - not true    
+    - you are mistaken
+    - mistaken
 
 - intent: bot_challenge
   examples: |
@@ -89,3 +93,5 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+    - are you a chatbot?
+    - am I talking to a chatbot?    
