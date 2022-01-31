@@ -2,10 +2,17 @@ version: "3.0"
 
 rules:
 
-- rule: greet the user anytime he greet you
+- rule: Say `hello` when the user starts a conversation with intent `greet`
+  conversation_start: true
   steps:
   - intent: greet
-  - action: utter_greet
+  - action: utter_greet  
+  - action: utter_offer  
+  
+- rule: Say thank you anytime the user says thank you
+  steps:
+  - intent: thank
+  - action: utter_thank
 
 - rule: Say goodbye anytime the user says goodbye
   steps:
@@ -16,4 +23,23 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+
+- rule: activate the answer form
+  steps:
+  - intent: user_question
+  - action: answer_form
+  - active_loop: answer_form
+
+- rule: respond to the user's question
+  condition:
+  - active_loop: answer_form
+  steps:
+  - action: answer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_answer
+
   
+ 

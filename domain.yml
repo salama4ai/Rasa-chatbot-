@@ -3,32 +3,116 @@ version: "3.0"
 intents:
   - greet
   - goodbye
-  - ask_population
-  - ask_capital
-  - affirm
-  - deny
-  - correction
+  - thank
   - bot_challenge
-
+  - user_question
+  
+entities:
+- pop_cap
+- country
+  
+slots:
+  pop_cap:
+    type: categorical
+    influence_conversation: true
+    values:
+      - capital
+      - population
+      - both
+    mappings:
+    - type: from_entity
+      entity: pop_cap
+  
+  country:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: country
+      
+forms:
+  user_question:
+    required_slots:
+      - pop_cap
+      - country 
+     
 responses:
   utter_greet:
   - text: "Hey! How are you?"
+  - text: "hey dude, how are you doing"
+  - text: "you, what's up"
+  - text: "Hi there, How is your day going?"
+  - text: "how day bro"
+  - text: "hello buddy, how you doing"
+  - text: "Welcome. How is your day going?"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
+  utter_thank:
+  - text: "you are welcome bro"
+  - text: "always happy to help"
+  - text: "with pleasure dude"
+  - text: "it's my pleasure"
 
   utter_goodbye:
-  - text: "Bye"
+  - text: "Bye, see you"
+  - text: "bye bye :)"
+  - text: "have a nice day"
+  - text: "see you around"
+  - text: "have a great day dude"
+  - text: "have a good day bro"
+  - text: "all the best buddy"
+  - text: "see you"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+  
+  utter_offer:
+  - text: "I can give you information about the capital and population of some countries if you like"
+  - text: "I have information about the capital and number of population of some countries"
+  
+  utter_ask_country:
+  - text: "Which country do you want to know about please?"
+  - text: "Please determine which country you intent" 
+
+  utter_ask_pop_cap:    
+  - text: "Do you want to know about the population or capital ?"
+  - text: "Are you interested in knowing population or capital ?"
+
+  utter_query_failure:         
+  - text: "I'm so sorry, but that country ({country}) is not included in our database?"
+  - text: "Sorry, i don't know about that country, select another one please?"
+  - text: "Unfortunately, i know nothing about that country, could you determine another country pls?"  
+  
+  utter_answer:
+    - condition:
+        - type: slot
+          name: pop_cap
+          value: capital
+      text: "The capital of {country} is {capital_city}"
+      text: "The capital city of {country} is {capital_city}"
+    - condition:
+        - type: slot
+          name: pop_cap
+          value: population
+      text: "{country} has a population of about {population_count} millions"  
+      text: "Population of {country} is about {population_count} millions"
+    - condition:
+        - type: slot
+          name: pop_cap
+          value: both
+      text: "{country} has a population of about {population_count} millions and it's capital is {capital_city}"  
+      text: "Population of {country} is about {population_count} millions, and {capital_city} is it's capital"
+
+actions:
+- utter_greet
+- utter_thank
+- utter_goodbye
+- utter_iamabot
+- utter_offer
+- utter_ask_country
+- utter_ask_pop_cap
+- utter_query_failure
+- utter_answer
+- validate_user_question
 
 session_config:
   session_expiration_time: 60

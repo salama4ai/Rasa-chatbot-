@@ -5,6 +5,7 @@ nlu:
   examples: |
     - hey
     - hello
+    - hallo
     - hi
     - hello there
     - good morning
@@ -21,7 +22,12 @@ nlu:
     - what's up
     - how do you do
     - how you doing
-    - how you doin    
+    - how you doin 
+    - greetings
+    - hope you are doing well
+    - yo
+    - how day
+    - How is your day going?
 
 - intent: goodbye
   examples: |
@@ -43,49 +49,15 @@ nlu:
     - all the best
     - wishes
     - regards
-
-- intent: affirm
+    
+- intent: thank
   examples: |
-    - yes
-    - y
-    - ya
-    - indeed
-    - of course
-    - sounds good
-    - correct
-    - ok
-    - true
-    - that is true
-    - that's true
-    - sure
-    - right
-    - yapp
-    - all right
-    - okay
-    - okey
-        
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-    - false
-    - wrong
-    - nope
-    - nop
-    - incorrect
-    - not at all
-    - noo
-    - impossible 
-    - i didn't 
-    - no i did not
-    - not true    
-    - you are mistaken
-    - mistaken
+    - thank you
+    - thanks
+    - i appreciate that
+    - thank u
+    - thx  
+    - many thanks 
 
 - intent: bot_challenge
   examples: |
@@ -94,4 +66,60 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
     - are you a chatbot?
-    - am I talking to a chatbot?    
+    - am I talking to a chatbot? 
+       
+- intent: user_question
+  examples: |
+    - could you tell me the [capital](pop_cap) of [usa](country)
+    - i ask about the [population](pop_cap) of [india](country)
+    - i need to know waht is the [capital](pop_cap) of [russia](country)
+    - i wonder about the [population](pop_cap) of [japan](country)
+    - inform me about the [sweden](country) [capital city](pop_cap)
+    - what is the [japan](country)'s [capital](pop_cap)
+    - do you know the [population count](pop_cap) of [finland](country)
+    - what about the [population](pop_cap) of [india](country)
+    - i ask about [capital](pop_cap)
+    - i meant [population](pop_cap)
+    - i want [capital](pop_cap)
+    - i query about [population](pop_cap)
+    - [capital](pop_cap)
+    - [population](pop_cap)
+    - [population and capital](pop_cap)
+    - i need to know about the [capital](pop_cap)
+    - tell me about tha [population](pop_cap)
+    - i need to know about [russia](country)
+    - do you know about [finland](country)
+    - i meant to know about [usa](country)
+    - tell me about [sweden](country)
+
+- synonym: population    
+  examples: |
+    - number of residents
+    - number of people
+    - populations
+    - population count
+    - citizen count
+    - residents count
+    
+- synonym: capital    
+  examples: |
+    - metropolis
+    - capital city           
+
+- synonym: country    
+  examples: |
+    - state
+    - republic
+   
+- lookup: country
+  examples: |
+    - usa
+    - greece
+    - sweden
+    - australia
+    - finland
+    - japan
+    - russia
+    - india
+    
+   
