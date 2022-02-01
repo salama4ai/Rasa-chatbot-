@@ -8,21 +8,26 @@ rules:
   - intent: greet
   - action: utter_greet  
   - action: utter_offer  
+  - action: action_listen
   
 - rule: Say thank you anytime the user says thank you
   steps:
   - intent: thank
   - action: utter_thank
+  - action: action_listen
 
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
   - action: utter_goodbye
+  
 
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+  - action: action_listen
+  
 
 
 - rule: activate the answer form
@@ -40,5 +45,6 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: action_answer
+  - action: action_listen
 
  

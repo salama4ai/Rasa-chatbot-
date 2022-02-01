@@ -1,5 +1,4 @@
 version: "3.0"
-
 nlu:
 - intent: greet
   examples: |
@@ -22,13 +21,12 @@ nlu:
     - what's up
     - how do you do
     - how you doing
-    - how you doin 
+    - how you doin
     - greetings
     - hope you are doing well
     - yo
     - how day
     - How is your day going?
-
 - intent: goodbye
   examples: |
     - cu
@@ -44,21 +42,19 @@ nlu:
     - bye bye
     - see you later
     - have a good day
-    - have a great day 
+    - have a great day
     - best regards
     - all the best
     - wishes
     - regards
-    
 - intent: thank
   examples: |
     - thank you
     - thanks
     - i appreciate that
     - thank u
-    - thx  
-    - many thanks 
-
+    - thx
+    - many thanks
 - intent: bot_challenge
   examples: |
     - are you a bot?
@@ -66,8 +62,8 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
     - are you a chatbot?
-    - am I talking to a chatbot? 
-       
+    - am I talking to a chatbot?
+    - are you bot
 - intent: user_question
   examples: |
     - could you tell me the [capital](pop_cap) of [usa](country)
@@ -93,9 +89,13 @@ nlu:
     - tell me about [sweden](country)
     - Tell me the [population](pop_cap) of the [USA](country)
     - is the [capital](pop_cap) of [india](country) is paris
-    - i need to check if the [population](pop_cap) of [finland](country) is 10 millions    
-
-- synonym: population    
+    - i need to check if the [population](pop_cap) of [finland](country) is 10 millions
+    - i wan to know about [usa](country) [population](pop_cap)
+    - i want to ask about the [capital city]{"entity": "pop_cap", "value": "capital"} of [russia](country)
+    - and what is the [population count]{"entity": "pop_cap", "value": "population"}
+    - what about [finland](country)
+    - what about [japan](country)'s [population](pop_cap)
+- synonym: population
   examples: |
     - number of residents
     - number of people
@@ -104,17 +104,14 @@ nlu:
     - population count
     - citizen count
     - residents count
-    
-- synonym: capital    
+- synonym: capital
   examples: |
     - metropolis
-    - capital city           
-
-- synonym: country    
+    - capital city
+- synonym: country
   examples: |
     - state
     - republic
-   
 - lookup: country
   examples: |
     - usa
@@ -125,5 +122,3 @@ nlu:
     - japan
     - russia
     - india
-    
-   
