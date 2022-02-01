@@ -83,25 +83,17 @@ responses:
   - text: "Unfortunately, i know nothing about {country}, could you determine another country pls?"  
 
 
-  utter_answer:
-    - condition:
-        - type: slot
-          name: pop_cap
-          value: "capital"
-      text: "The capital of {country} is {cap}"
-      text: "The capital city of {country} is {cap}"
-    - condition:
-        - type: slot
-          name: pop_cap
-          value: "population"
-      text: "{country} has a population of about {pop} millions"  
-      text: "Population of {country} is about {pop} millions"
-    - condition:
-        - type: slot
-          name: pop_cap
-          value: "both"
-      text: "{country} has a population of about {pop} millions and it's capital is {cap}"  
-      text: "Population of {country} is about {pop} millions, and {cap} is it's capital"
+  utter_answer_cap:
+  - text: "The capital of {country} is {cap}"
+  - text: "The capital city of {country} is {cap}"
+  
+  utter_answer_pop:
+  - text: "{country} has a population of about {pop} millions"  
+  - text: "Population of {country} is about {pop} millions"
+  
+  utter_answer_both:
+  - text: "{country} has a population of about {pop} millions and it's capital is {cap}"  
+  - text: "Population of {country} is about {pop} millions, and {cap} is it's capital"
         
 actions:
 - utter_greet
@@ -112,8 +104,10 @@ actions:
 - utter_ask_country
 - utter_ask_pop_cap
 - utter_query_failure
+- utter_answer_cap
+- utter_answer_both
+- utter_answer_pop
 - action_answer
-- utter_answer
 - validate_user_question
 
 session_config:

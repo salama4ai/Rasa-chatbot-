@@ -93,10 +93,20 @@ class ActionAnswer(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
          
         country = tracker.get_slot("country")
-        dispatcher.utter_message(response = "utter_answer", 
-                                 country=f"{country}", 
-                                 cap=f"{countries_cap[country.lower()]}", 
-                                 pop=f"{countries_pop[country.lower()]}")
+        pop_cap_value = tracker.get_slot("pop_cap")
+        if pop_cap_value==capital:
+            dispatcher.utter_message(response = "utter_answer_cap", 
+                                     country=f"{country}", 
+                                     cap=f"{countries_cap[country.lower()]}")
+        elif pop_cap_value==population:
+            dispatcher.utter_message(response = "utter_answer_pop", 
+                                     country=f"{country}",  
+                                     pop=f"{countries_pop[country.lower()]}")            
+        else :
+            dispatcher.utter_message(response = "utter_answer_both", 
+                                     country=f"{country}", 
+                                     cap=f"{countries_cap[country.lower()]}", 
+                                     pop=f"{countries_pop[country.lower()]}")            
         return
 
 
