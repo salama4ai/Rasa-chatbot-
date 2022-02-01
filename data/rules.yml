@@ -28,14 +28,14 @@ rules:
 - rule: activate the answer form
   steps:
   - intent: user_question
-  - action: answer_form
-  - active_loop: answer_form
+  - action: validate_user_question
+  - active_loop: validate_user_question
 
 - rule: respond to the user's question
   condition:
-  - active_loop: answer_form
+  - active_loop: validate_user_question
   steps:
-  - action: answer_form
+  - action: validate_user_question
   - active_loop: null
   - slot_was_set:
     - requested_slot: null

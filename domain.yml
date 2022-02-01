@@ -81,24 +81,25 @@ responses:
   - text: "I'm so sorry, but {country} is not included in our database?"
   - text: "Sorry, i don't know about {country}, select another one please?"
   - text: "Unfortunately, i know nothing about {country}, could you determine another country pls?"  
- 
+
+
   utter_answer:
     - condition:
         - type: slot
           name: pop_cap
-          value: capital
+          value: "capital"
       text: "The capital of {country} is {cap}"
       text: "The capital city of {country} is {cap}"
     - condition:
         - type: slot
           name: pop_cap
-          value: population
+          value: "population"
       text: "{country} has a population of about {pop} millions"  
       text: "Population of {country} is about {pop} millions"
     - condition:
         - type: slot
           name: pop_cap
-          value: both
+          value: "both"
       text: "{country} has a population of about {pop} millions and it's capital is {cap}"  
       text: "Population of {country} is about {pop} millions, and {cap} is it's capital"
         
