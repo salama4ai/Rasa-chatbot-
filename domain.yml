@@ -81,7 +81,7 @@ responses:
   - text: "I'm so sorry, but {country} is not included in our database?"
   - text: "Sorry, i don't know about {country}, select another one please?"
   - text: "Unfortunately, i know nothing about {country}, could you determine another country pls?"  
-  
+ 
   utter_answer:
     - condition:
         - type: slot
@@ -101,7 +101,7 @@ responses:
           value: both
       text: "{country} has a population of about {population_count} millions and it's capital is {capital_city}"  
       text: "Population of {country} is about {population_count} millions, and {capital_city} is it's capital"
-
+        
 actions:
 - utter_greet
 - utter_thank
@@ -111,6 +111,7 @@ actions:
 - utter_ask_country
 - utter_ask_pop_cap
 - utter_query_failure
+- action_answer
 - utter_answer
 - validate_user_question
 

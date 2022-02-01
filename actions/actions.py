@@ -16,9 +16,7 @@ from rasa_sdk.forms import FormValidationAction
 import os
 import requests
 import json
-import uuid
-#
-#
+
 
 countries_cap = {
     "usa":"Washington, D.C.",
@@ -32,14 +30,14 @@ countries_cap = {
     }
 
 countries_pop = {
-    "usa": 330,
-    "greece": 10.7,
-    "sweden": 10.35,
-    "australia": 25.7,
-    "finland": 5.5,
-    "japan": 126,
-    "russia": 144,
-    "india": 1380,   
+    "usa": "330",
+    "greece": "10.7",
+    "sweden": "10.35"",
+    "australia": "25.7",
+    "finland": "5.5",
+    "japan": "126",
+    "russia": "144",
+    "india": "1380",   
     }
 
  class ValidateUserQuestion(FormValidationAction):
@@ -83,4 +81,33 @@ countries_pop = {
              return {"pop_cap": None}
          else:
              return {"pop_cap": pop_cap}
-                          
+                   
+#
+ class ActionAnswer(Action):
+
+     def name(self) -> Text:
+         return "action_answer"
+
+     def run(self, dispatcher: CollectingDispatcher,
+             tracker: Tracker,
+             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+         
+         country = tracker.get_slot("country")
+         pop_cap = tracker.get_slot("popcap")
+         pop, cap = None, None
+         if (pop_cap==capital)|(pop_cap==both):
+             cap = countries_cap[country.lower()]
+             
+         if (pop_cap==population)|(pop_cap==both):
+             pop = countries_pop[country.lower()]
+
+             
+         dispatcher.utter_message(response = "utter_answer", 
+                                  #country=f"{country}", 
+                                  #capital=f"{cap}", 
+                                  #population=f"{pop}"
+                                  )
+         return [] 
+
+
+  
