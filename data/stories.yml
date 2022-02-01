@@ -2,29 +2,103 @@ version: "3.0"
 
 stories:
 
-- story: happy path
+- story: arbitrary path 1
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - action: utter_offer
+  - intent: user_question
+  - action: validate_user_question
+  - intent: user_question
+  - action: validate_user_question
+  - intent: goodbye
+  - action: utter_goodbye  
+    
+- story: arbitrary path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: user_question
+  - action: validate_user_question
+  - intent: thank
+  - action: utter_thank
+  - intent: goodbye
+  - action: utter_goodbye  
 
-- story: sad path 1
+- story: arbitrary path 3
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
+  - intent: user_question
+  - action: validate_user_question
+  - intent: user_question
+  - action: validate_user_question  
+  - intent: bot_challenge
+  - action: utter_iamabot  
+  - intent: thank  
+  - action: utter_thank
+  - intent: goodbye
   - action: utter_goodbye
+  
+
+- story: arbitrary path 4
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: user_question
+  - action: validate_user_question
+  - intent: bot_challenge
+  - action: utter_iamabot    
+  - intent: user_question
+  - action: validate_user_question  
+  - intent: thank  
+  - action: utter_thank
+  - intent: goodbye
+  - action: utter_goodbye  
+  
+
+- story: arbitrary path 5
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: user_question
+  - action: validate_user_question   
+  - intent: user_question
+  - action: validate_user_question  
+  - intent: thank  
+  - action: utter_thank
+  - intent: bot_challenge
+  - action: utter_iamabot   
+  - intent: goodbye
+  - action: utter_goodbye  
+  
+
+- story: arbitrary path 6
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: bot_challenge
+  - action: utter_iamabot  
+  - intent: user_question
+  - action: validate_user_question     
+  - intent: thank  
+  - action: utter_thank   
+  - intent: goodbye
+  - action: utter_goodbye    
+  
+- story: arbitrary path 7
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: user_question
+  - action: validate_user_question   
+  - intent: user_question
+  - action: validate_user_question  
+  - intent: thank  
+  - action: utter_thank 
+  - intent: goodbye
+  - action: utter_goodbye  
+  - intent: bot_challenge
+  - action: utter_iamabot    
+  - intent: goodbye
+  - action: utter_goodbye   
