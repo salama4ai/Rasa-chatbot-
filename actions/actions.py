@@ -7,12 +7,16 @@
 
 # This is a simple example for a custom action which utters "Hello World!"
 
- from typing import Any, Text, Dict, List
-#
- from rasa_sdk import Action, Tracker
- from rasa_sdk.events import SlotSet
- from rasa_sdk.executor import CollectingDispatcher
- from rasa_sdk.types import DomainDict
+from typing import Any, Text, Dict, List, Optional
+from rasa_sdk import Action, Tracker
+from rasa_sdk.events import SlotSet, EventType
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.types import DomainDict 
+from rasa_sdk.forms import FormValidationAction
+import os
+import requests
+import json
+import uuid
 #
 #
 
@@ -43,19 +47,40 @@ countries_pop = {
      def name(self) -> Text:
          return "validate_user_question"
 #
-     def validate_pop_cap(
+     def validate_country(
              self,
-             slot_value: Any,
              dispatcher: CollectingDispatcher,
              tracker: Tracker,
              domain: DomainDict
              ) -> Dict[Text, Any]:
-
-         if slot_value.lower() not in countries_pop:
-             dispatcher.utter_message(text=)
+         """ validate the 'country' value"""
+         country = tracker.get_slot("country")
+         
+         # check if the country slot value is not null
+         if not country:
+             dispatcher.utter_message(response = "utter_ask_country")  
+             return {"country": None}
+         
+         # check if the country slot value is in our database        
+         elif country.lower() not in countries_pop.keys():
+             dispatcher.utter_message(response = "utter_query_failure")
              return {"country": None}
              
-         dispatcher.utter_message(text="Hello World!")
-         state = next(tracker.get_latest_entity_values(country), None)
-
-         return [SlotSet("country", state)]
+         else: 
+             return {"country", country}
+#
+     def validate_pop_cap(
+             self,
+             dispatcher: CollectingDispatcher,
+             tracker: Tracker,
+             domain: DomainDict
+             ) -> Dict[Text, Any]:
+         """ validate the 'pop_cap' value"""
+         pop_cap = tracker.get_slot("popcap")
+         
+         if not pop_cap:
+             dispatcher.utter_message(response = "utter_ask_pop_cap")
+             return {"pop_cap": None}
+         else:
+             return {"pop_cap": pop_cap}
+                          

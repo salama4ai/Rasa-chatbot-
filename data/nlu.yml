@@ -91,11 +91,15 @@ nlu:
     - do you know about [finland](country)
     - i meant to know about [usa](country)
     - tell me about [sweden](country)
+    - Tell me the [population](pop_cap) of the [USA](country)
+    - is the [capital](pop_cap) of [india](country) is paris
+    - i need to check if the [population](pop_cap) of [finland](country) is 10 millions    
 
 - synonym: population    
   examples: |
     - number of residents
     - number of people
+    - number of citizen
     - populations
     - population count
     - citizen count

@@ -41,5 +41,4 @@ rules:
     - requested_slot: null
   - action: utter_answer
 
-  
  

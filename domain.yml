@@ -14,7 +14,7 @@ entities:
 slots:
   pop_cap:
     type: categorical
-    influence_conversation: true
+    influence_conversation: False
     values:
       - capital
       - population
@@ -25,7 +25,7 @@ slots:
   
   country:
     type: text
-    influence_conversation: true
+    influence_conversation: False
     mappings:
     - type: from_entity
       entity: country
@@ -78,9 +78,9 @@ responses:
   - text: "Are you interested in knowing population or capital ?"
 
   utter_query_failure:         
-  - text: "I'm so sorry, but that country ({country}) is not included in our database?"
-  - text: "Sorry, i don't know about that country, select another one please?"
-  - text: "Unfortunately, i know nothing about that country, could you determine another country pls?"  
+  - text: "I'm so sorry, but {country} is not included in our database?"
+  - text: "Sorry, i don't know about {country}, select another one please?"
+  - text: "Unfortunately, i know nothing about {country}, could you determine another country pls?"  
   
   utter_answer:
     - condition:
