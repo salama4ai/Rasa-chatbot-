@@ -13,9 +13,9 @@ from rasa_sdk.events import SlotSet, EventType
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict 
 from rasa_sdk.forms import FormValidationAction
-import os
-import requests
-import json
+#import os
+#import requests
+#import json
 
 
 countries_cap = {
@@ -32,7 +32,7 @@ countries_cap = {
 countries_pop = {
     "usa": "330",
     "greece": "10.7",
-    "sweden": "10.35"",
+    "sweden": "10.35",
     "australia": "25.7",
     "finland": "5.5",
     "japan": "126",
@@ -40,74 +40,64 @@ countries_pop = {
     "india": "1380",   
     }
 
- class ValidateUserQuestion(FormValidationAction):
+class ValidateUserQuestion(FormValidationAction):
 #
-     def name(self) -> Text:
-         return "validate_user_question"
+    def name(self) -> Text:
+        return "validate_user_question"
 #
-     def validate_country(
-             self,
-             dispatcher: CollectingDispatcher,
-             tracker: Tracker,
-             domain: DomainDict
-             ) -> Dict[Text, Any]:
-         """ validate the 'country' value"""
-         country = tracker.get_slot("country")
+    def validate_country(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict
+            ) -> Dict[Text, Any]:
+        """ validate the 'country' value"""
+        country = tracker.get_slot("country")
          
-         # check if the country slot value is not null
-         if not country:
-             dispatcher.utter_message(response = "utter_ask_country")  
-             return {"country": None}
+        # check if the country slot value is not null
+        if not country:
+            dispatcher.utter_message(response = "utter_ask_country")  
+            return {"country": None}
          
-         # check if the country slot value is in our database        
-         elif country.lower() not in countries_pop.keys():
-             dispatcher.utter_message(response = "utter_query_failure")
-             return {"country": None}
+        # check if the country slot value is in our database        
+        elif country.lower() not in countries_pop.keys():
+            dispatcher.utter_message(response = "utter_query_failure")
+            return {"country": None}
              
-         else: 
-             return {"country", country}
+        else: 
+            return {"country", country}
 #
-     def validate_pop_cap(
-             self,
-             dispatcher: CollectingDispatcher,
-             tracker: Tracker,
-             domain: DomainDict
-             ) -> Dict[Text, Any]:
-         """ validate the 'pop_cap' value"""
-         pop_cap = tracker.get_slot("popcap")
+    def validate_pop_cap(
+            self,
+            dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: DomainDict
+            ) -> Dict[Text, Any]:
+        """ validate the 'pop_cap' value"""
+        pop_cap = tracker.get_slot("popcap")
          
-         if not pop_cap:
-             dispatcher.utter_message(response = "utter_ask_pop_cap")
-             return {"pop_cap": None}
-         else:
-             return {"pop_cap": pop_cap}
+        if not pop_cap:
+            dispatcher.utter_message(response = "utter_ask_pop_cap")
+            return {"pop_cap": None}
+        else:
+            return {"pop_cap": pop_cap}
                    
 #
- class ActionAnswer(Action):
+class ActionAnswer(Action):
 
-     def name(self) -> Text:
-         return "action_answer"
+    def name(self) -> Text:
+        return "action_answer"
 
-     def run(self, dispatcher: CollectingDispatcher,
-             tracker: Tracker,
-             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
          
-         country = tracker.get_slot("country")
-         pop_cap = tracker.get_slot("popcap")
-         pop, cap = None, None
-         if (pop_cap==capital)|(pop_cap==both):
-             cap = countries_cap[country.lower()]
-             
-         if (pop_cap==population)|(pop_cap==both):
-             pop = countries_pop[country.lower()]
-
-             
-         dispatcher.utter_message(response = "utter_answer", 
-                                  #country=f"{country}", 
-                                  #capital=f"{cap}", 
-                                  #population=f"{pop}"
-                                  )
-         return [] 
+        country = tracker.get_slot("country")
+        dispatcher.utter_message(response = "utter_answer", 
+                                 country=f"{country}", 
+                                 cap=f"{countries_cap[country.lower()]}", 
+                                 pop=f"{countries_pop[country.lower()]}")
+        return
 
 
   

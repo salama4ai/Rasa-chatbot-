@@ -87,20 +87,20 @@ responses:
         - type: slot
           name: pop_cap
           value: capital
-      text: "The capital of {country} is {capital_city}"
-      text: "The capital city of {country} is {capital_city}"
+      text: "The capital of {country} is {cap}"
+      text: "The capital city of {country} is {cap}"
     - condition:
         - type: slot
           name: pop_cap
           value: population
-      text: "{country} has a population of about {population_count} millions"  
-      text: "Population of {country} is about {population_count} millions"
+      text: "{country} has a population of about {pop} millions"  
+      text: "Population of {country} is about {pop} millions"
     - condition:
         - type: slot
           name: pop_cap
           value: both
-      text: "{country} has a population of about {population_count} millions and it's capital is {capital_city}"  
-      text: "Population of {country} is about {population_count} millions, and {capital_city} is it's capital"
+      text: "{country} has a population of about {pop} millions and it's capital is {cap}"  
+      text: "Population of {country} is about {pop} millions, and {cap} is it's capital"
         
 actions:
 - utter_greet
