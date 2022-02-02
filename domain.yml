@@ -52,25 +52,43 @@ responses:
   - text: all the best buddy
   - text: see you
   utter_iamabot:
+  - text: I am a bot, how did you guess that :)
   - text: I am a bot, powered by Rasa.
+  - text: your guess is correct, I am a bot :)
+  - text: you are so clever to guess that, yes i'm a bot :)
+  - text: dude i was tring to hide that, ya i'm a bot
+  - text: that what i was tring to not let you reveal, ya i'm a bot
   utter_offer:
   - text: I can give you information about the capital and population of some countries if you like
   - text: I have information about the capital and number of population of some countries
+  - text: if you interested to know about the population or the capital of countries, i can help you 
+  - text: By the way, i offer information about the capital and the population of countries
+  - text: i will provide you with the capital and population if you ask me
+  - text: please feel free to ask me about the capital and population of countries
+  - text: if you interested in knowing the population or the capital of counties, i will help you
+  - text: the population and the capital of countries is my game
   utter_ask_country:
   - text: Which country do you want to know about please?
   - text: Please determine which country you intent
+  - text: which country do you interested in?
+  - text: which country do you care about?
+  - text: select a country please?
   utter_ask_pop_cap:
-  - text: Do you want to know about the population or capital ?
-  - text: Are you interested in knowing population or capital ?
+  - text: Do you want to know about the population or the capital ?
+  - text: Are you interested in knowing the population or the capital ?
+  - text: do you intented in the capital or the population?
+  - text: are you care about the capital or the population?
   utter_query_failure:
   - text: I'm so sorry, but {country} is not included in our database?
   - text: Sorry, i don't know about {country}, select another one please?
   - text: Unfortunately, i know nothing about {country}, could you determine another country pls?
+  - text: hmm, i appologize i don't know much about that country, select another one please
+  - text: i don't know about this country dude, sorry!
   utter_answer_cap:
-  - text: The capital of {country} is {cap}
   - text: The capital city of {country} is {cap}
+  - text: "{cap} is the capital city of {country}"
   utter_answer_pop:
-  - text: '{country} has a population of about {pop} millions'
+  - text: "{country} has a population of about {pop} millions"
   - text: Population of {country} is about {pop} millions
   utter_answer_both:
   - text: "{country} has a population of about {pop} millions and it's capital is {cap}"

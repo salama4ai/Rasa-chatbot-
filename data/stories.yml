@@ -17,6 +17,9 @@ version: "3.0"
     - country: usa
   - action: validate_user_question
   - action: action_answer
+  
+- story: interactive_story_2
+  steps:  
   - intent: user_question
     entities:
     - pop_cap: capital
@@ -27,11 +30,17 @@ version: "3.0"
     - country: russia
   - action: validate_user_question
   - action: action_answer
+  
+- story: interactive_story_3
+  steps:  
   - intent: user_question
     entities:
     - pop_cap: population
   - action: validate_user_question
   - action: action_answer
+  
+- story: interactive_story_4
+  steps:  
   - intent: user_question
     entities:
     - country: finland
@@ -39,6 +48,9 @@ version: "3.0"
     - country: finland
   - action: validate_user_question
   - action: action_answer
+  
+- story: interactive_story_5
+  steps:  
   - intent: user_question
     entities:
     - country: japan
@@ -52,11 +64,14 @@ version: "3.0"
   - intent: bot_challenge
   - action: utter_iamabot
 
-- story: interactive_story_2
+- story: interactive_story_6
   steps:
   - intent: greet
   - action: utter_greet
   - action: utter_offer
+  
+- story: interactive_story_7
+  steps:  
   - intent: user_question
     entities:
     - country: usa
@@ -67,6 +82,9 @@ version: "3.0"
     - country: usa
   - action: validate_user_question
   - action: action_answer
+  
+- story: interactive_story_8
+  steps:  
   - intent: user_question
     entities:
     - pop_cap: capital
@@ -77,11 +95,17 @@ version: "3.0"
     - country: russia
   - action: validate_user_question
   - action: action_answer
+  
+- story: interactive_story_9
+  steps:  
   - intent: user_question
     entities:
     - pop_cap: population
   - action: validate_user_question
   - action: action_answer
+  
+- story: interactive_story_10
+  steps:  
   - intent: user_question
     entities:
     - country: finland
@@ -89,6 +113,9 @@ version: "3.0"
     - country: finland
   - action: validate_user_question
   - action: action_answer
+
+- story: interactive_story_11
+  steps:  
   - intent: user_question
     entities:
     - country: japan

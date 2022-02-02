@@ -108,17 +108,23 @@ nlu:
   examples: |
     - metropolis
     - capital city
+- synonym: both
+  examples: |
+    - both
+    - the two
+    - both of them
+    - all
 - synonym: country
   examples: |
     - state
     - republic
-- lookup: country
-  examples: |
-    - usa
-    - greece
-    - sweden
-    - australia
-    - finland
-    - japan
-    - russia
-    - india
+#- lookup: country
+#  examples: |
+#    - usa
+#    - greece
+#    - sweden
+#    - australia
+#    - finland
+#    - japan
+#    - russia
+#    - india

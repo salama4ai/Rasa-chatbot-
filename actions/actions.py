@@ -8,11 +8,11 @@
 # This is a simple example for a custom action which utters "Hello World!"
 
 from typing import Any, Text, Dict, List, Optional
-from rasa_sdk import Action, Tracker
+from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.events import SlotSet, EventType
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict 
-from rasa_sdk.forms import FormValidationAction
+#from rasa_sdk.forms import FormValidationAction
 #import os
 #import requests
 #import json
@@ -50,12 +50,14 @@ class ValidateUserQuestion(FormValidationAction):
             dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: DomainDict
+            ,country: Any                ###############
             ) -> Dict[Text, Any]:
         """ validate the 'country' value"""
-        country = tracker.get_slot("country")
+        #country = tracker.get_slot("country")###############
          
         # check if the country slot value is not null
         if not country:
+            #print(country)
             dispatcher.utter_message(response = "utter_ask_country")  
             return {"country": None}
          
@@ -72,10 +74,11 @@ class ValidateUserQuestion(FormValidationAction):
             dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: DomainDict
+            , pop_cap: Any          ##################
             ) -> Dict[Text, Any]:
         """ validate the 'pop_cap' value"""
-        pop_cap = tracker.get_slot("popcap")
-         
+        #pop_cap = tracker.get_slot("pop_cap")##########
+        #print(pop_cap)
         if not pop_cap:
             dispatcher.utter_message(response = "utter_ask_pop_cap")
             return {"pop_cap": None}
@@ -93,16 +96,19 @@ class ActionAnswer(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
          
         country = tracker.get_slot("country")
-        pop_cap_value = tracker.get_slot("pop_cap")
-        if pop_cap_value==capital:
+        pop_cap = tracker.get_slot("pop_cap")
+        if not pop_cap:
+            dispatcher.utter_message(response = "utter_ask_pop_cap")
+            
+        elif pop_cap=="capital":
             dispatcher.utter_message(response = "utter_answer_cap", 
                                      country=f"{country}", 
                                      cap=f"{countries_cap[country.lower()]}")
-        elif pop_cap_value==population:
+        elif pop_cap=="population":
             dispatcher.utter_message(response = "utter_answer_pop", 
                                      country=f"{country}",  
                                      pop=f"{countries_pop[country.lower()]}")            
-        else :
+        elif pop_cap=="both":
             dispatcher.utter_message(response = "utter_answer_both", 
                                      country=f"{country}", 
                                      cap=f"{countries_cap[country.lower()]}", 

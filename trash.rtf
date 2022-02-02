@@ -42,3 +42,111 @@
     - not true    
     - you are mistaken
     - mistaken
+    
+    
+    
+    
+    
+    
+
+  
+ 
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_offer
+  - intent: user_question
+    entities:
+    - country: usa
+    - pop_cap: population
+  - slot_was_set:
+    - pop_cap: population
+  - slot_was_set:
+    - country: usa
+  - action: validate_user_question
+  - action: action_answer
+  - intent: user_question
+    entities:
+    - pop_cap: capital
+    - country: russia
+  - slot_was_set:
+    - pop_cap: capital
+  - slot_was_set:
+    - country: russia
+  - action: validate_user_question
+  - action: action_answer
+  - intent: user_question
+    entities:
+    - pop_cap: population
+  - action: validate_user_question
+  - action: action_answer
+  - intent: user_question
+    entities:
+    - country: finland
+  - slot_was_set:
+    - country: finland
+  - action: validate_user_question
+  - action: action_answer
+  - intent: user_question
+    entities:
+    - country: japan
+    - pop_cap: population
+  - slot_was_set:
+    - pop_cap: population
+  - slot_was_set:
+    - country: japan
+  - action: validate_user_question
+  - action: action_answer
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- story: interactive_story_2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_offer
+  - intent: user_question
+    entities:
+    - country: usa
+    - pop_cap: population
+  - slot_was_set:
+    - pop_cap: population
+  - slot_was_set:
+    - country: usa
+  - action: validate_user_question
+  - action: action_answer
+  - intent: user_question
+    entities:
+    - pop_cap: capital
+    - country: russia
+  - slot_was_set:
+    - pop_cap: capital
+  - slot_was_set:
+    - country: russia
+  - action: validate_user_question
+  - action: action_answer
+  - intent: user_question
+    entities:
+    - pop_cap: population
+  - action: validate_user_question
+  - action: action_answer
+  - intent: user_question
+    entities:
+    - country: finland
+  - slot_was_set:
+    - country: finland
+  - action: validate_user_question
+  - action: action_answer
+  - intent: user_question
+    entities:
+    - country: japan
+    - pop_cap: population
+  - slot_was_set:
+    - pop_cap: population
+  - slot_was_set:
+    - country: japan
+  - action: validate_user_question
+  - action: action_answer
+
+    

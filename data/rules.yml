@@ -9,6 +9,13 @@ rules:
   - action: utter_greet  
   - action: utter_offer  
   - action: action_listen
+
+- rule: Say `hello` when the user starts a conversation with intent `greet`
+  conversation_start: False
+  steps:
+  - intent: greet
+  - action: utter_greet  
+  - action: action_listen
   
 - rule: Say thank you anytime the user says thank you
   steps:
