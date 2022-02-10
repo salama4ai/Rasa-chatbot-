@@ -38,7 +38,7 @@ rules:
   
 
 
-- rule: activate the answer form
+- rule: activate the user_question
   steps:
   - intent: user_question
   - action: validate_user_question

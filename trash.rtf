@@ -148,5 +148,32 @@
     - country: japan
   - action: validate_user_question
   - action: action_answer
+  
+  
+  
+          # check if the country slot value is in our database  
+          else:
+              get_countries = requests.get(f"{url}Countries").json()            
+              try:
+                  if get_countries["success"]==1:
+                      if country.title() not in get_countries["body"].values():
+                          dispatcher.utter_message(response = "utter_not_found")
+                          return {"country": None}  
+                      else:
+                          return {"country", country.title()} 
+                  else:
+                      dispatcher.utter_message(response = "utter_server_failure")
+                      return {"country": None}                     
+              except:
+                  dispatcher.utter_message(response = "utter_server_failure")
+                  return {"country": None}  
 
-    
+        
+        if not pop_cap:
+            dispatcher.utter_message(response = "utter_ask_pop_cap", country = f"{country}")  
+            return
+            
+        elif not country:
+            dispatcher.utter_message(response = "utter_ask_country")
+            return
+            

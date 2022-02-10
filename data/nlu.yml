@@ -78,11 +78,11 @@ nlu:
     - i meant [population](pop_cap)
     - i want [capital](pop_cap)
     - i query about [population](pop_cap)
-    - [capital](pop_cap)
-    - [population](pop_cap)
-    - [population and capital](pop_cap)
+    - [Capital](pop_cap)
+    - [Population](pop_cap)
+    - [Population and capital](pop_cap)
     - i need to know about the [capital](pop_cap)
-    - tell me about tha [population](pop_cap)
+    - tell me about tha Population](pop_cap)
     - i need to know about [russia](country)
     - do you know about [finland](country)
     - i meant to know about [usa](country)
@@ -95,7 +95,7 @@ nlu:
     - and what is the [population count]{"entity": "pop_cap", "value": "population"}
     - what about [finland](country)
     - what about [japan](country)'s [population](pop_cap)
-- synonym: population
+- synonym: Population
   examples: |
     - number of residents
     - number of people
@@ -104,27 +104,17 @@ nlu:
     - population count
     - citizen count
     - residents count
-- synonym: capital
+    - population
+    - Population
+- synonym: Capital
   examples: |
     - metropolis
     - capital city
-- synonym: both
-  examples: |
-    - both
-    - the two
-    - both of them
-    - all
+    - capital
+    - Capital
 - synonym: country
   examples: |
     - state
     - republic
-#- lookup: country
-#  examples: |
-#    - usa
-#    - greece
-#    - sweden
-#    - australia
-#    - finland
-#    - japan
-#    - russia
-#    - india
+    - Country
+    - country

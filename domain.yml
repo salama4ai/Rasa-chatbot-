@@ -2,15 +2,18 @@ version: '3.0'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+
 intents:
 - user_question
 - greet
 - bot_challenge
 - goodbye
 - thank
+
 entities:
 - country
 - pop_cap
+
 slots:
   pop_cap:
     type: categorical
@@ -19,15 +22,21 @@ slots:
     - type: from_entity
       entity: pop_cap
     values:
-    - capital
-    - population
-    - both
+    - Capital
+    - Population    
   country:
     type: text
     influence_conversation: false
     mappings:
     - type: from_entity
-      entity: country
+      entity: country      
+
+forms:
+  validate_user_question:
+    required_slots:
+    - pop_cap
+    - country
+
 responses:
   utter_greet:
   - text: Hey! How are you?
@@ -74,11 +83,15 @@ responses:
   - text: which country do you care about?
   - text: select a country please?
   utter_ask_pop_cap:
-  - text: Do you want to know about the population or the capital ?
-  - text: Are you interested in knowing the population or the capital ?
+  - text: Do you want to know about the population or the capital of {country}?
+  - text: Are you interested in knowing the population or the capital  of {country}?
   - text: do you intented in the capital or the population?
   - text: are you care about the capital or the population?
-  utter_query_failure:
+  utter_server_failure:
+  - text: i'm so sorry, but we facing server problem now, could you try later please?
+  - text: so sorry, could you try later please? we facing some issues 
+  - text: i'm sorry, perhaps a connection problem happened
+  utter_not_found:
   - text: I'm so sorry, but {country} is not included in our database?
   - text: Sorry, i don't know about {country}, select another one please?
   - text: Unfortunately, i know nothing about {country}, could you determine another country pls?
@@ -88,14 +101,10 @@ responses:
   - text: The capital city of {country} is {cap}
   - text: "{cap} is the capital city of {country}"
   utter_answer_pop:
-  - text: "{country} has a population of about {pop} millions"
-  - text: Population of {country} is about {pop} millions
-  utter_answer_both:
-  - text: "{country} has a population of about {pop} millions and it's capital is {cap}"
-  - text: Population of {country} is about {pop} millions, and {cap} is it's capital
+  - text: "{country} has a population of about {pop} "
+  - text: Population of {country} is about {pop} 
+
 actions:
-- action_answer
-- utter_answer_both
 - utter_answer_cap
 - utter_answer_pop
 - utter_ask_country
@@ -104,11 +113,8 @@ actions:
 - utter_greet
 - utter_iamabot
 - utter_offer
-- utter_query_failure
+- utter_not_found
+- utter_server_failure
 - utter_thank
 - validate_user_question
-forms:
-  user_question:
-    required_slots:
-    - pop_cap
-    - country
+- action_answer
