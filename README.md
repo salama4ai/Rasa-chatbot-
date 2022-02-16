@@ -52,6 +52,9 @@ if you use ```rasa interactive``` so you can train the bot by chatting and inter
 if you write custom action so you need to open anaconda prompt and activate the bot and in the prompt run
 ```rasa run actions``` 
 and leave it open in the background to be able to use the custom action with another prompt
+you also can run shell in debug mode using ```rasa shell --debug```
+and you can use ```rasa train --force``` to enforce retraining
+if you make changes in action.py file you don't need to retrain again just rerun ```rasa run actions```
 
 this project done by Ahmed Salama
 email:salama4ai@gmail.com

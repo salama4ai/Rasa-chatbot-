@@ -17,6 +17,7 @@ entities:
 slots:
   pop_cap:
     type: categorical
+    #initial_value: false    
     influence_conversation: false
     mappings:
     - type: from_entity
@@ -26,6 +27,7 @@ slots:
     - Population    
   country:
     type: text
+    #initial_value: false    
     influence_conversation: false
     mappings:
     - type: from_entity
@@ -34,87 +36,100 @@ slots:
 forms:
   validate_user_question:
     required_slots:
-    - pop_cap
     - country
+    - pop_cap
 
 responses:
   utter_greet:
-  - text: Hey! How are you?
-  - text: hey dude, how are you doing
-  - text: you, what's up
-  - text: Hi there, How is your day going?
-  - text: how day bro
-  - text: hello buddy, how you doing
-  - text: Welcome. How is your day going?
+  - text: "Hey! How are you?"
+  - text: "hey dude, how are you doing"
+  - text: "you, what's up"
+  - text: "Hi there, How is your day going?"
+  - text: "how day bro"
+  - text: "hello buddy, how you doing"
+  - text: "Welcome. How is your day going?"
   utter_thank:
-  - text: you are welcome bro
-  - text: always happy to help
-  - text: with pleasure dude
-  - text: it's my pleasure
+  - text: "you are welcome bro"
+  - text: "always happy to help"
+  - text: "with pleasure dude"
+  - text: "it's my pleasure"
   utter_goodbye:
-  - text: Bye, see you
-  - text: bye bye :)
-  - text: have a nice day
-  - text: see you around
-  - text: have a great day dude
-  - text: have a good day bro
-  - text: all the best buddy
-  - text: see you
+  - text: "Bye, see you"
+  - text: "bye bye :)"
+  - text: "have a nice day"
+  - text: "see you around"
+  - text: "have a great day dude"
+  - text: "have a good day bro"
+  - text: "all the best buddy"
+  - text: "see you"
   utter_iamabot:
-  - text: I am a bot, how did you guess that :)
-  - text: I am a bot, powered by Rasa.
-  - text: your guess is correct, I am a bot :)
-  - text: you are so clever to guess that, yes i'm a bot :)
-  - text: dude i was tring to hide that, ya i'm a bot
-  - text: that what i was tring to not let you reveal, ya i'm a bot
+  - text: "I am a bot, how did you guess that :)"
+  - text: "I am a bot, powered by Rasa."
+  - text: "your guess is correct, I am a bot :)"
+  - text: "you are so clever to guess that, yes i'm a bot :)"
+  - text: "dude i was tring to hide that, ya i'm a bot"
+  - text: "that what i was tring to not let you reveal, ya i'm a bot"
   utter_offer:
-  - text: I can give you information about the capital and population of some countries if you like
-  - text: I have information about the capital and number of population of some countries
-  - text: if you interested to know about the population or the capital of countries, i can help you 
-  - text: By the way, i offer information about the capital and the population of countries
-  - text: i will provide you with the capital and population if you ask me
-  - text: please feel free to ask me about the capital and population of countries
-  - text: if you interested in knowing the population or the capital of counties, i will help you
-  - text: the population and the capital of countries is my game
+  - text: "I can give you information about the capital and population of some countries if you like"
+  - text: "I have information about the capital and number of population of some countries"
+  - text: "if you interested to know about the population or the capital of countries, i can help you "
+  - text: "By the way, i offer information about the capital and the population of countries"
+  - text: "i will provide you with the capital and population if you ask me"
+  - text: "please feel free to ask me about the capital and population of countries"
+  - text: "if you interested in knowing the population or the capital of counties, i will help you"
+  - text: "the population and the capital of countries is my game"
   utter_ask_country:
-  - text: Which country do you want to know about please?
-  - text: Please determine which country you intent
-  - text: which country do you interested in?
-  - text: which country do you care about?
-  - text: select a country please?
+  - text: "Which country do you want to know about please?"
+  - text: "Please determine which country you intent"
+  - text: "which country do you interested in?"
+  - text: "which country do you care about?"
+  - text: "select a country please?"  
   utter_ask_pop_cap:
-  - text: Do you want to know about the population or the capital of {country}?
-  - text: Are you interested in knowing the population or the capital  of {country}?
-  - text: do you intented in the capital or the population?
-  - text: are you care about the capital or the population?
+  - text: "Do you want to know about the Population or the Capital of {country}?"    
+  - text: "Are you interested in knowing the Population or the Capital  of {country}?"     
+  - text: "do you intented in the Capital or the Population?"     
+  - text: "are you care about the Capital or the Population?"              
   utter_server_failure:
-  - text: i'm so sorry, but we facing server problem now, could you try later please?
-  - text: so sorry, could you try later please? we facing some issues 
-  - text: i'm sorry, perhaps a connection problem happened
+  - text: "i'm so sorry, but we are facing server problem now, could you try later please?"
+  - text: "so sorry, could you try later please? there are some issues "
+  - text: "i'm sorry, perhaps a connection problem happened"
+  - text: "The server encountered an internal error and cannot complete your request."
   utter_not_found:
-  - text: I'm so sorry, but {country} is not included in our database?
-  - text: Sorry, i don't know about {country}, select another one please?
-  - text: Unfortunately, i know nothing about {country}, could you determine another country pls?
-  - text: hmm, i appologize i don't know much about that country, select another one please
-  - text: i don't know about this country dude, sorry!
+  - text: "I'm so sorry, but {country} is not included in our database?"
+  - text: "Sorry, i don't know about {country}, select another one please?"
+  - text: "Unfortunately, i know nothing about {country}, could you determine another country pls?"
+  - text: "hmm, i appologize i don't know much about that country, select another one please"
+  - text: "i don't know about this country dude, sorry!" 
   utter_answer_cap:
-  - text: The capital city of {country} is {cap}
+  - text: "The capital city of {country} is {cap}"
   - text: "{cap} is the capital city of {country}"
   utter_answer_pop:
   - text: "{country} has a population of about {pop} "
-  - text: Population of {country} is about {pop} 
+  - text: "Population of {country} is about {pop}"
+  utter_typo:
+  - text: "Sorry, i didn't get you Please could you spell your input correctly?"
+  - text: "i didn't understand, Please could you spell your message accurately?"
+  - text: "could you rewrite your choice correctly please"
+  - text: "i'm affraid i didn't understand, Please could you spell your input correctly?"
+  - text: "it seems that you write some words wrongly"
+  - text: "Please could you spell it correctly?"    
+  - text: "Sorry, I’m afraid I don’t follow you."
+  - text: "Excuse me, could you rewrite your words correctly please?"
+  - text: "I’m sorry, I don’t understand. Could you write it correctly please?"
 
 actions:
-- utter_answer_cap
-- utter_answer_pop
+- utter_greet
+- utter_offer
+- utter_iamabot
+- utter_thank
+- utter_goodbye
 - utter_ask_country
 - utter_ask_pop_cap
-- utter_goodbye
-- utter_greet
-- utter_iamabot
-- utter_offer
 - utter_not_found
 - utter_server_failure
-- utter_thank
+- utter_answer_cap
+- utter_answer_pop
+- utter_typo
 - validate_user_question
 - action_answer
+- temporarly_action_answer

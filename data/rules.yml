@@ -27,9 +27,8 @@ rules:
   steps:
   - intent: goodbye
   - action: utter_goodbye
-  - action: action_listen
+  - action: action_deactivate_loop  
   
-
 - rule: Say 'I am a bot' anytime the user challenges
   steps:
   - intent: bot_challenge
@@ -52,7 +51,17 @@ rules:
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
-  - action: action_answer
+  - action: temporarly_action_answer
   - action: action_listen
 
- 
+#- rule: handling if the user ask different question when the form is active
+#  condition:
+  # Condition that form is active.
+#  - active_loop: validate_user_question
+#  steps:
+  # This path handles the case of an intent `bot_challenge` while the form is active.
+#  - intent: bot_challenge
+#  - action: utter_iamabot
+  # Return to form after handling the `bot_challenge` intent
+#  - action: validate_user_question
+#  - active_loop: validate_user_question

@@ -90,11 +90,12 @@ nlu:
     - Tell me the [population](pop_cap) of the [USA](country)
     - is the [capital](pop_cap) of [india](country) is paris
     - i need to check if the [population](pop_cap) of [finland](country) is 10 millions
-    - i wan to know about [usa](country) [population](pop_cap)
+    - i want to know about [usa](country) [population](pop_cap)
     - i want to ask about the [capital city]{"entity": "pop_cap", "value": "capital"} of [russia](country)
     - and what is the [population count]{"entity": "pop_cap", "value": "population"}
     - what about [finland](country)
     - what about [japan](country)'s [population](pop_cap)
+    - [Aa](country)
 - synonym: Population
   examples: |
     - number of residents

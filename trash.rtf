@@ -177,3 +177,74 @@
             dispatcher.utter_message(response = "utter_ask_country")
             return
             
+            
+
+
+countries_cap = {
+    "USA":"Washington, D.C.",
+    "Greece": "Athens",
+    "Sweden": "Stockholm",
+    "Australia": "Canberra",
+    "Finland": "Helsinki",
+    "Japan": "Tokyo",
+    "Russia": "Moscow",
+    "India": "New Delhi"}
+
+countries_pop = {
+    "USA": "330",
+    "Greece": "10.7",
+    "Sweden": "10.35",
+    "Australia": "25.7",
+    "Finland": "5.5",
+    "Japan": "126",
+    "Russia": "144",
+    "India": "1380"}            
+    
+    
+    
+    
+
+class FutureActionAnswer(Action):
+
+    def name(self) -> Text:
+        return "future_action_answer"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, 
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+         
+        country = tracker.get_slot("country")
+        pop_cap = tracker.get_slot("pop_cap")
+        payload_cap = {}        
+        
+
+        # the action when the country is selected and pop_cap=capital
+        print("action_answer")
+        if pop_cap=="Capital":                         
+            try:                
+                get_capital = requests.get(f"{base_url}Capital", 
+                                           timeout=timeout, params=payload_cap)
+                # check if the status_code is ok, i.e less than 400 
+                if not get_capital.ok:
+                    raise Exception
+                cap = get_capital.json()["body"]["capital"]
+                dispatcher.utter_message(response = "utter_answer_cap", 
+                                         country = country, cap = cap)
+            except:
+                dispatcher.utter_message(response = "utter_server_failure")
+                
+                
+                        
+        # the action when the country is selected and pop_cap=population
+        elif pop_cap=="Population":
+            try:
+                get_population = requests.get(f"{base_url}Population", 
+                                              timeout=timeout, params=payload_pop)                                              
+                # check if the status_code is ok, i.e less than 400 
+                if not get_population.ok:
+                    raise Exception
+                pop = get_population.json()["body"]["population"]
+                dispatcher.utter_message(response = "utter_answer_pop", 
+                                         country = country, pop = pop)
+            except:
+                dispatcher.utter_message(response = "utter_server_failure")                       
+        return    
