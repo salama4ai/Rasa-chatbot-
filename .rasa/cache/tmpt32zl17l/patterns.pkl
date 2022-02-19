@@ -1,6 +1,0 @@
-[
-  {
-    "name": "country",
-    "pattern": "(\\busa\\b|\\bgreece\\b|\\bsweden\\b|\\baustralia\\b|\\bfinland\\b|\\bjapan\\b|\\brussia\\b|\\bindia\\b)"
-  }
-]

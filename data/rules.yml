@@ -51,7 +51,7 @@ rules:
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
-  - action: temporarly_action_answer
+  - action: action_answer
   - action: action_listen
 
 #- rule: handling if the user ask different question when the form is active

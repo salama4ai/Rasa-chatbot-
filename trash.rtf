@@ -248,3 +248,27 @@ class FutureActionAnswer(Action):
             except:
                 dispatcher.utter_message(response = "utter_server_failure")                       
         return    
+        
+        
+        
+        
+        
+
+endpoint = "https://qcooc59re3.execute-api.us-east-1.amazonaws.com/dev/get"
+timeout = 55
+
+auth = BotoAWSRequestsAuth(
+    aws_host="qcooc59re3.execute-api.us-east-1.amazonaws.com",
+    aws_region="us-east-1",
+    aws_service="execute-api")        
+    
+    
+    
+import requests
+import json
+endpoint = "https://qcooc59re3.execute-api.us-east-1.amazonaws.com/dev/get"
+timeout = 55
+country = "Finland"
+payload = {"country": country}
+res_cap = requests.post(f"{endpoint}Capital", json=payload, timeout=timeout)
+res_cap.json()    

@@ -95,27 +95,21 @@ nlu:
     - and what is the [population count]{"entity": "pop_cap", "value": "population"}
     - what about [finland](country)
     - what about [japan](country)'s [population](pop_cap)
-    - [Aa](country)
 - synonym: Population
   examples: |
     - number of residents
     - number of people
     - number of citizen
     - populations
-    - population count
     - citizen count
     - residents count
     - population
-    - Population
 - synonym: Capital
   examples: |
     - metropolis
-    - capital city
     - capital
-    - Capital
 - synonym: country
   examples: |
     - state
     - republic
     - Country
-    - country

@@ -132,4 +132,3 @@ actions:
 - utter_typo
 - validate_user_question
 - action_answer
-- temporarly_action_answer
