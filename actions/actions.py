@@ -24,41 +24,49 @@ timeout = 55
 #                           aws_region="us-east-1", aws_service="execute-api")
 
 
-class ValidateUserQuestion(FormValidationAction):
+     #any class name but it's good to be as the name of the action in camel
+class ValidateCountryPopCapForm(FormValidationAction):
     
     
     def name(self) -> Text:
-        return "validate_user_question"
-
-    def validate_country(self, dispatcher: CollectingDispatcher, tracker: Tracker,
-                         domain: DomainDict, slot_value: Any) -> List[Dict[Text, Any]]:
+        return "validate_country_pop_cap_form"
+              #"validate_<form_name>"
+                        
+    
+    #def validate_<slot_name>
+    def validate_country(self, slot_value: Any, dispatcher: CollectingDispatcher, tracker: Tracker,
+                         domain: DomainDict) -> Dict[Text, Any]:
         """ validate the 'country' value"""
         
-        print("validate_country")  # to notify me when this function is called
+        print("validate_country", "\n slot_value = ", slot_value)
+        # to notify me when this function is called
+
         # check if the country slot value is not null
-        if not slot_value:
+        if slot_value == None:
             dispatcher.utter_message(response = "utter_ask_country")
             return {"country": None}              
             
         # check if the country slot value is in our database  in case the user give country
-        country = slot_value.title()         
+        country = slot_value.title()  
+        print(f"country = {country}")
         try:
             res_country = requests.get(f"{endpoint}Countries", timeout=timeout)
             # check if the status_code is ok, less than 400 
-            if not res_country.ok:
+            if res_country.ok==False:
                 raise Exception
             elif country not in res_country.json()["body"]:
                 dispatcher.utter_message(response = "utter_not_found", country=country)
                 return {"country": None}  
             else:
+                print(f"country={country}, type(country) = {type(country)}")
                 return {"country", country}
         except:
             dispatcher.utter_message(response = "utter_server_failure")
             return {"country": None}
 
-
-    def validate_pop_cap(self, dispatcher: CollectingDispatcher, tracker: Tracker, 
-                         domain: DomainDict, slot_value: Any) -> List[Dict[Text, Any]]:
+    #def validate_<slot_name>
+    def validate_pop_cap(self, slot_value: Any, dispatcher: CollectingDispatcher, tracker: Tracker, 
+                         domain: DomainDict) -> Dict[Text, Any]:
         """ validate the 'pop_cap' value"""
         
         print("validate_pop_cap")  # to notify me when this function is called
@@ -86,29 +94,11 @@ class ActionAnswer(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, 
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-
-
-
-        print("program now in ActionAnswer.run()")
-        # i couldn't make the validation functions work by any means, so i call
-        # them explicitly till i could fix them issue        
-        ###############################################################
-        # to be deleted after i could fix the validation method issue        
-        ValidateUserQuestion.validate_pop_cap(self, dispatcher, tracker, domain, tracker.get_slot("pop_cap"))
-        country = ValidateUserQuestion.validate_country(self, dispatcher, tracker, domain, tracker.get_slot("country"))
-        if not country:
-            return
-        ################################################################
-
-
-
-
-
         country = tracker.get_slot("country")
         pop_cap = tracker.get_slot("pop_cap")              
         payload = {"country": country}
         #headers = {'Content-Type': 'application/json'}          
-        
+        print(f"action_answer pop_cap = {pop_cap}, country = {country}")
         # the action when the country is selected and pop_cap=capital        
         if pop_cap=="Capital":
             try:

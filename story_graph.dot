@@ -2,16 +2,12 @@ digraph  {
 0 [class="start active", fillcolor=green, fontsize=12, label=START, style=filled];
 "-1" [class=end, fillcolor=red, fontsize=12, label=END, style=filled];
 1 [class=active, fontsize=12, label=action_session_start];
-2 [class=active, fontsize=12, label=validate_user_question];
-3 [class=active, fontsize=12, label=action_extract_slots];
-4 [class=active, fontsize=12, label=validate_user_question];
-5 [class="dashed active", fontsize=12, label=action_answer];
-6 [class="intent active", fillcolor=lightblue, label="/user_question", shape=rect, style=filled];
+2 [class=active, fontsize=12, label=validate_country_pop_cap_form];
+3 [class="dashed active", fontsize=12, label=action_answer];
+4 [class="intent active", fillcolor=lightblue, label="/country_pop_cap_query", shape=rect, style=filled];
 0 -> "-1"  [class="", key=NONE, label=""];
 0 -> 1  [class=active, key=NONE, label=""];
-1 -> 6  [class=active, key=0];
+1 -> 4  [class=active, key=0];
 2 -> 3  [class=active, key=NONE, label=""];
-3 -> 4  [class=active, key=NONE, label=""];
-4 -> 5  [class=active, key=NONE, label=""];
-6 -> 2  [class=active, key=0];
+4 -> 2  [class=active, key=0];
 }

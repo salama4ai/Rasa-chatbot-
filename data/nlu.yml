@@ -64,7 +64,7 @@ nlu:
     - are you a chatbot?
     - am I talking to a chatbot?
     - are you bot
-- intent: user_question
+- intent: country_pop_cap_query
   examples: |
     - could you tell me the [capital](pop_cap) of [usa](country)
     - i ask about the [population](pop_cap) of [india](country)
@@ -104,12 +104,20 @@ nlu:
     - citizen count
     - residents count
     - population
+    - ppulation
+    - popultion
+    - poplation
+    - Population
+    - Ppulation
+    - Popultion
+    - Poplation
 - synonym: Capital
   examples: |
     - metropolis
     - capital
-- synonym: country
-  examples: |
-    - state
-    - republic
-    - Country
+    - cpital
+    - captal
+    - Capitl
+    - Cpital
+    - Captal
+    - Capitl

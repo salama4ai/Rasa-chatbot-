@@ -4,7 +4,7 @@ session_config:
   carry_over_slots_to_new_session: true
 
 intents:
-- user_question
+- country_pop_cap_query
 - greet
 - bot_challenge
 - goodbye
@@ -34,10 +34,10 @@ slots:
       entity: country      
 
 forms:
-  validate_user_question:
+  country_pop_cap_form:
     required_slots:
-    - country
-    - pop_cap
+      - country
+      - pop_cap
 
 responses:
   utter_greet:
@@ -130,5 +130,5 @@ actions:
 - utter_answer_cap
 - utter_answer_pop
 - utter_typo
-- validate_user_question
+- validate_country_pop_cap_form
 - action_answer

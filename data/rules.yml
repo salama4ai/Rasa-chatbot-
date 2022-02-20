@@ -37,17 +37,17 @@ rules:
   
 
 
-- rule: activate the user_question
+- rule: activate the country_pop_cap_form
   steps:
-  - intent: user_question
-  - action: validate_user_question
-  - active_loop: validate_user_question
+  - intent: country_pop_cap_query
+  - action: validate_country_pop_cap_form
+  - active_loop: validate_country_pop_cap_form
 
 - rule: respond to the user's question
   condition:
-  - active_loop: validate_user_question
+  - active_loop: validate_country_pop_cap_form
   steps:
-  - action: validate_user_question
+  - action: validate_country_pop_cap_form
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
