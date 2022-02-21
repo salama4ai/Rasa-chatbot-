@@ -31,6 +31,10 @@ class ValidateCountryPopCapForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_country_pop_cap_form"
               #"validate_<form_name>"
+
+    async def required_slots(self, domain_slots, dispatcher, tracker, domain):
+        print(f'>>> Domain slots:\n{domain_slots}\n========')
+        return domain_slots
                         
     
     #def validate_<slot_name>
@@ -42,13 +46,17 @@ class ValidateCountryPopCapForm(FormValidationAction):
         # to notify me when this function is called
 
         # check if the country slot value is not null
-        if slot_value == None:
+        if slot_value is None:
             dispatcher.utter_message(response = "utter_ask_country")
             return {"country": None}              
-            
-        # check if the country slot value is in our database  in case the user give country
-        country = slot_value.title()  
+        elif len(slot_value)>3:
+            country = slot_value.title()
+        else:
+            country = slot_value.upper()
+              
         print(f"country = {country}")
+        
+        # check if the country slot value is in our database  in case the user give country        
         try:
             res_country = requests.get(f"{endpoint}Countries", timeout=timeout)
             # check if the status_code is ok, less than 400 
@@ -58,8 +66,7 @@ class ValidateCountryPopCapForm(FormValidationAction):
                 dispatcher.utter_message(response = "utter_not_found", country=country)
                 return {"country": None}  
             else:
-                print(f"country={country}, type(country) = {type(country)}")
-                return {"country", country}
+                return {"country": country}
         except:
             dispatcher.utter_message(response = "utter_server_failure")
             return {"country": None}
@@ -72,7 +79,7 @@ class ValidateCountryPopCapForm(FormValidationAction):
         print("validate_pop_cap")  # to notify me when this function is called
         try:
             pop_cap = slot_value.title()
-            if (pop_cap in ["Capital", "Population"]):
+            if pop_cap in ["Capital", "Population"]:
                 return {"pop_cap": pop_cap}
             else:
                 raise Exception()
@@ -104,8 +111,8 @@ class ActionAnswer(Action):
             try:
                 res_cap = requests.post(f"{endpoint}Capital", 
                                         json=payload, 
-                                        timeout=timeout,
-                                        #headers=headers, 
+                                        timeout=timeout
+                                        #,headers=headers, 
                                         #auth=auth
                                         )
                 # check if the status_code is ok, i.e less than 400 
@@ -125,8 +132,8 @@ class ActionAnswer(Action):
             try:
                 res_pop = requests.post(f"{endpoint}Population", 
                                         json=payload, 
-                                        timeout=timeout,
-                                        #headers=headers, 
+                                        timeout=timeout
+                                        #,headers=headers, 
                                         #auth=auth
                                         )
                 # check if the status_code is ok, i.e less than 400 
