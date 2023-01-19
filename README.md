@@ -1,7 +1,7 @@
 # salama4ai-chatbot
 chatbot based on rasa framework as an assessment NLP task for Master-linux company jan-2022
 
-#### Objective:-
+## Objective:-
 The goal is to create Rasa Chatbot that can provide answers for users questions about the Population and the capitel city of collecton of countries, where the chatbot use the restful API to get that information from third-party website
 
 ## initialization tips:-
