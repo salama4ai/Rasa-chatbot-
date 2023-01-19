@@ -60,8 +60,14 @@ you also can run shell in debug mode using ```rasa shell --debug```
 and you can use ```rasa train --force``` to enforce retraining
 if you make changes in action.py file you don't need to retrain again just rerun ```rasa run actions```
 
-this project done by Ahmed Salama
-email:salama4ai@gmail.com
-linkedin:linkedin.com/in/salama4ai
+
+this work done by Ahmed Salama at Oct-2022
+
+salama4ai@gmail.com
+
+[github.com/salama4ai](https://www.github.com/salama4ai/)
+
+[linkedin.com/in/salama4ai](https://www.linkedin.com/in/salama4ai/)
+
 
 
