@@ -61,7 +61,7 @@ and you can use ```rasa train --force``` to enforce retraining
 if you make changes in action.py file you don't need to retrain again just rerun ```rasa run actions```
 
 
-this work done by Ahmed Salama at Oct-2022
+this work done by Ahmed Salama at JAN-2022
 
 salama4ai@gmail.com
 
